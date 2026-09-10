@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘿嘿视频-轻松发现有趣短视频与热门内容的观看指南</title>
+<meta name="description" content="嘿嘿视频是一个聚合轻松、有趣、生活化短视频内容的观看与发现平台，提供热门推荐、分类浏览、榜单排行、创作者内容和常见问题解答，帮助用户快速找到想看的短视频。">
+<meta name="keywords" content="嘿嘿视频,短视频,搞笑视频,生活短视频,热门视频推荐,短视频观看,视频榜单">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --bg:#0e0f1a;
+  --bg-soft:#161829;
+  --panel:#1c1f34;
+  --panel-2:#232741;
+  --line:rgba(255,255,255,.08);
+  --text:#f2f3fa;
+  --text-dim:#a9adc9;
+  --text-mute:#7c81a0;
+  --brand:#ff4d6d;
+  --brand-2:#7c5cff;
+  --accent:#ffce4d;
+  --radius:16px;
+  --shadow:0 18px 40px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Helvetica Neue",Arial,sans-serif;
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(124,92,255,.28), transparent 60%),
+    radial-gradient(700px 420px at 92% 4%, rgba(255,77,109,.22), transparent 62%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+ul{list-style:none;}
+.wrap{width:min(1180px,92%);margin:0 auto;}
+
+/* ===== 顶部 ===== */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(14,15,26,.82);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;gap:26px;
+  height:68px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-size:20px;font-weight:800;letter-spacing:.5px;
+  white-space:nowrap;
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:11px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:grid;place-items:center;
+  font-size:15px;font-weight:900;color:#fff;
+  box-shadow:0 8px 18px rgba(255,77,109,.35);
+}
+.logo em{font-style:normal;color:var(--brand);}
+.main-nav{display:flex;gap:22px;font-size:15px;color:var(--text-dim);}
+.main-nav a{padding:6px 0;border-bottom:2px solid transparent;transition:.2s;}
+.main-nav a:hover,.main-nav a.active{color:#fff;border-bottom-color:var(--brand);}
+.header-actions{margin-left:auto;display:flex;align-items:center;gap:12px;}
+.search-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:8px 14px;min-width:210px;
+}
+.search-box input{
+  background:transparent;border:0;outline:0;color:var(--text);
+  font-size:14px;width:100%;
+}
+.search-box input::placeholder{color:var(--text-mute);}
+.search-box span{color:var(--text-mute);font-size:14px;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  border:0;cursor:pointer;font-size:14px;font-weight:600;
+  padding:9px 18px;border-radius:999px;transition:.22s;
+  font-family:inherit;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;box-shadow:0 10px 22px rgba(255,77,109,.28);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(255,77,109,.4);}
+.btn-ghost{background:var(--panel);color:var(--text-dim);border:1px solid var(--line);}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.25);}
+.menu-toggle{display:none;background:var(--panel);border:1px solid var(--line);color:#fff;border-radius:10px;padding:6px 10px;font-size:18px;cursor:pointer;}
+
+/* ===== 首屏 ===== */
+.hero{padding:56px 0 40px;position:relative;overflow:hidden;}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent);
+  background:rgba(255,206,77,.12);
+  border:1px solid rgba(255,206,77,.3);
+  padding:5px 14px;border-radius:999px;margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(30px,4.4vw,48px);
+  line-height:1.25;font-weight:900;letter-spacing:.5px;
+  margin-bottom:18px;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{
+  color:var(--text-dim);font-size:16px;max-width:560px;margin-bottom:26px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+.hero-stats div strong{display:block;font-size:22px;font-weight:800;}
+.hero-stats div small{color:var(--text-mute);font-size:13px;}
+
+.hero-visual{
+  background:linear-gradient(160deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);border-radius:24px;
+  padding:20px;box-shadow:var(--shadow);
+}
+.player{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:linear-gradient(135deg,#2a2050,#3b1f3a);
+  aspect-ratio:16/10;display:grid;place-items:center;
+}
+.player::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 70% 30%, rgba(255,77,109,.35), transparent 55%);
+}
+.play-btn{
+  position:relative;z-index:2;
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(255,255,255,.92);color:#12131f;
+  display:grid;place-items:center;font-size:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.4);
+}
+.player-label{
+  position:absolute;left:14px;bottom:12px;z-index:2;
+  font-size:13px;color:#fff;background:rgba(0,0,0,.45);
+  padding:4px 10px;border-radius:8px;
+}
+.player-list{margin-top:16px;display:grid;gap:10px;}
+.player-list li{
+  display:flex;align-items:center;gap:12px;
+  font-size:14px;color:var(--text-dim);
+  padding:8px 10px;border-radius:10px;transition:.2s;
+}
+.player-list li:hover{background:rgba(255,255,255,.05);color:#fff;}
+.player-list .idx{
+  width:24px;height:24px;border-radius:7px;flex:none;
+  display:grid;place-items:center;font-size:12px;font-weight:700;
+  background:rgba(255,77,109,.16);color:var(--brand);
+}
+
+/* ===== 通用区块 ===== */
+.section{padding:52px 0;}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:20px;margin-bottom:26px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-size:clamp(21px,2.5vw,27px);font-weight:800;letter-spacing:.4px;
+}
+.section-head h2 small{
+  display:block;font-size:13px;font-weight:400;color:var(--text-mute);
+  margin-top:6px;letter-spacing:.3px;
+}
+.section-head .more{font-size:14px;color:var(--brand);}
+.section-head .more:hover{text-decoration:underline;}
+
+/* 分类 */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:14px;
+}
+.cat-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:14px;padding:18px 16px;transition:.24s;
+}
+.cat-card:hover{
+  transform:translateY(-4px);border-color:rgba(255,77,109,.45);
+  background:var(--panel-2);
+}
+.cat-card .ico{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  font-size:18px;margin-bottom:12px;
+  background:linear-gradient(135deg,rgba(255,77,109,.22),rgba(124,92,255,.22));
+}
+.cat-card h3{font-size:15px;font-weight:700;margin-bottom:4px;}
+.cat-card p{font-size:12.5px;color:var(--text-mute);line-height:1.6;}
+
+/* 视频卡片 */
+.video-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:20px;
+}
+.video-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;transition:.24s;
+  display:flex;flex-direction:column;
+}
+.video-card:hover{transform:translateY(-5px);border-color:rgba(124,92,255,.5);box-shadow:var(--shadow);}
+.thumb{
+  aspect-ratio:16/9;position:relative;
+  display:grid;place-items:center;font-size:30px;
+}
+.thumb.t1{background:linear-gradient(135deg,#3a1f4d,#5c2b52);}
+.thumb.t2{background:linear-gradient(135deg,#1f3a4d,#2b4a5c);}
+.thumb.t3{background:linear-gradient(135deg,#4d3a1f,#5c4a2b);}
+.thumb.t4{background:linear-gradient(135deg,#1f4d3a,#2b5c46);}
+.thumb.t5{background:linear-gradient(135deg,#4d1f2b,#5c2b3a);}
+.thumb.t6{background:linear-gradient(135deg,#2b1f4d,#3a2b5c);}
+.thumb .dur{
+  position:absolute;right:8px;bottom:8px;font-size:12px;
+  background:rgba(0,0,0,.6);color:#fff;padding:2px 7px;border-radius:6px;
+}
+.thumb .tag{
+  position:absolute;left:8px;top:8px;font-size:11.5px;
+  background:rgba(255,77,109,.9);color:#fff;padding:2px 8px;border-radius:6px;
+}
+.video-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.video-body h3{font-size:15px;font-weight:700;line-height:1.5;}
+.video-body p{font-size:13px;color:var(--text-mute);line-height:1.65;}
+.video-meta{
+  margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  font-size:12.5px;color:var(--text-mute);padding-top:8px;border-top:1px solid var(--line);
+}
+
+/* 榜单 + 侧栏 */
+.split{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start;}
+.rank-list{display:grid;gap:12px;}
+.rank-item{
+  display:flex;align-items:center;gap:14px;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:13px;padding:13px 16px;transition:.22s;
+}
+.rank-item:hover{border-color:rgba(255,206,77,.5);transform:translateX(4px);}
+.rank-no{
+  width:30px;height:30px;flex:none;border-radius:9px;
+  display:grid;place-items:center;font-size:13px;font-weight:800;
+  background:rgba(255,255,255,.07);color:var(--text-dim);
+}
+.rank-item:nth-child(1) .rank-no{background:linear-gradient(135deg,#ff4d6d,#ff8a5c);color:#fff;}
+.rank-item:nth-child(2) .rank-no{background:linear-gradient(135deg,#7c5cff,#4d8dff);color:#fff;}
+.rank-item:nth-child(3) .rank-no{background:linear-gradient(135deg,#ffce4d,#ff9d4d);color:#2a1c00;}
+.rank-body{flex:1;min-width:0;}
+.rank-body h3{font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rank-body p{font-size:12.5px;color:var(--text-mute);}
+.rank-score{font-size:13px;font-weight:800;color:var(--accent);}
+
+.side-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px;margin-bottom:20px;
+}
+.side-card h3{font-size:16px;font-weight:800;margin-bottom:14px;}
+.side-list{display:grid;gap:12px;}
+.side-list li{display:flex;gap:10px;font-size:13.5px;color:var(--text-dim);}
+.side-list li b{color:var(--brand);font-weight:800;}
+.side-tags{display:flex;flex-wrap:wrap;gap:9px;}
+.side-tags a{
+  font-size:13px;color:var(--text-dim);background:rgba(255,255,255,.05);
+  border:1px solid var(--line);padding:5px 12px;border-radius:999px;transition:.2s;
+}
+.side-tags a:hover{color:#fff;border-color:var(--brand);background:rgba(255,77,109,.12);}
+
+/* 指南 */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:20px;}
+.guide-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px;
+}
+.guide-card .num{
+  font-size:13px;font-weight:800;color:var(--brand);letter-spacing:1px;margin-bottom:10px;
+}
+.guide-card h3{font-size:16.5px;font-weight:800;margin-bottom:10px;}
+.guide-card p{font-size:14px;color:var(--text-dim);line-height:1.75;}
+
+/* 创作者 */
+.creator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px;}
+.creator{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px;text-align:center;transition:.24s;
+}
+.creator:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.5);}
+.avatar{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 12px;
+  display:grid;place-items:center;font-size:20px;font-weight:800;color:#fff;
+}
+.avatar.a1{background:linear-gradient(135deg,#ff4d6d,#7c5cff);}
+.avatar.a2{background:linear-gradient(135deg,#4d8dff,#4dd6c1);}
+.avatar.a3{background:linear-gradient(135deg,#ffce4d,#ff7a4d);}
+.avatar.a4{background:linear-gradient(135deg,#7c5cff,#ff4d9d);}
+.creator h3{font-size:15px;font-weight:700;margin-bottom:5px;}
+.creator p{font-size:12.5px;color:var(--text-mute);line-height:1.6;}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:920px;}
+.faq details{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:13px;padding:0 18px;transition:.2s;
+}
+.faq details[open]{border-color:rgba(255,77,109,.45);background:var(--panel-2);}
+.faq summary{
+  cursor:pointer;list-style:none;padding:16px 0;
+  font-size:15px;font-weight:700;display:flex;justify-content:space-between;gap:14px;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:var(--brand);font-size:19px;line-height:1;font-weight:400;}
+.faq details[open] summary::after{content:"–";}
+.faq .answer{padding:0 0 18px;font-size:14px;color:var(--text-dim);line-height:1.8;}
+
+/* 页脚 */
+.site-footer{
+  border-top:1px solid var(--line);margin-top:36px;
+  padding:44px 0 30px;background:rgba(0,0,0,.22);
+}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;}
+.footer-brand p{font-size:13.5px;color:var(--text-mute);margin-top:12px;max-width:320px;line-height:1.75;}
+.footer-col h4{font-size:14px;font-weight:800;margin-bottom:14px;}
+.footer-col a{display:block;font-size:13.5px;color:var(--text-mute);padding:4px 0;transition:.2s;}
+.footer-col a:hover{color:var(--brand);}
+.footer-bottom{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12.5px;color:var(--text-mute);
+}
+
+/* 响应式 */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:760px){
+  .main-nav{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;gap:0;background:var(--bg-soft);
+    border-bottom:1px solid var(--line);padding:10px 5%;
+  }
+  .main-nav.open{display:flex;}
+  .main-nav a{padding:12px 0;border-bottom:1px solid var(--line);}
+  .main-nav a:hover,.main-nav a.active{border-bottom-color:var(--line);}
+  .menu-toggle{display:block;}
+  .search-box{display:none;}
+  .hero{padding:38px 0 28px;}
+  .hero-stats{gap:22px;}
+  .section{padding:38px 0;}
+}
+@media (max-width:520px){
+  .footer-grid{grid-template-columns:1fr;}
+  .video-grid{grid-template-columns:1fr 1fr;gap:14px;}
+  .video-body p{display:none;}
+  .creator-grid{grid-template-columns:1fr 1fr;}
+  .cat-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">嘿</span>
+      嘿<em>嘿</em>视频
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#recommend" class="active">推荐</a>
+      <a href="#category">分类</a>
+      <a href="#rank">榜单</a>
+      <a href="#guide">观看指南</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <form class="search-box" onsubmit="return false;">
+        <span>🔍</span>
+        <input type="text" placeholder="搜索视频、话题或创作者" aria-label="搜索视频">
+      </form>
+      <button class="btn btn-primary" type="button">开始观看</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="展开导航">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="hero-tag">● 轻松一刻 · 每日更新</span>
+        <h1>在<span>嘿嘿视频</span>，用几分钟找到让你会心一笑的内容</h1>
+        <p class="lead">
+          嘿嘿视频是一个面向日常娱乐需求的短视频内容聚合页面。这里把搞笑片段、生活记录、美食制作、萌宠日常、创意手工等轻松题材集中呈现，帮助你在碎片时间里快速挑选想看的视频，而不必在大量信息中反复翻找。
+        </p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" type="button">浏览今日推荐</button>
+          <a class="btn btn-ghost" href="#guide">查看观看指南</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>6+</strong><small>内容分类</small></div>
+          <div><strong>每日</strong><small>更新推荐位</small></div>
+          <div><strong>多端</strong><small>适配浏览</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="player">
+          <div class="play-btn">▶</div>
+          <span class="player-label">今日精选 · 轻松短片</span>
+        </div>
+        <ul class="player-list">
+          <li><span class="idx">1</span>三分钟看完本周最受欢迎的搞笑片段</li>
+          <li><span class="idx">2</span>家常菜快手做法合集，新手也能跟着做</li>
+          <li><span class="idx">3</span>萌宠日常：猫咪的迷惑行为大赏</li>
+          <li><span class="idx">4</span>创意手工：用闲置物品做一件小摆件</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <section class="section" id="category">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>内容分类<small>按兴趣方向挑选，减少无关内容的干扰</small></h2>
+        <a href="#recommend" class="more">查看全部推荐 →</a>
+      </div>
+      <div class="cat-grid">
+        <a href="#recommend" class="cat-card">
+          <div class="ico">😂</div>
+          <h3>搞笑娱乐</h3>
+          <p>段子、反转、生活糗事，适合放松心情时观看。</p>
+        </a>
+        <a href="#recommend" class="cat-card">
+          <div class="ico">🍳</div>
+          <h3>美食生活</h3>
+          <p>家常菜、快手早餐、探店记录，贴近日常饮食。</p>
+        </a>
+        <a href="#recommend" class="cat-card">
+          <div class="ico">🐾</div>
+          <h3>萌宠动物</h3>
+          <p>猫狗日常、动物趣事，治愈系内容集中地。</p>
+        </a>
+        <a href="#recommend" class="cat-card">
+          <div class="ico">✂️</div>
+          <h3>创意手工</h3>
+          <p>DIY、改造、手作教程，动手能力友好。</p>
+        </a>
+        <a href="#recommend" class="cat-card">
+          <div class="ico">🚴</div>
+          <h3>运动户外</h3>
+          <p>健身入门、骑行徒步、户外体验记录。</p>
+        </a>
+        <a href="#recommend" class="cat-card">
+          <div class="ico">🎬</div>
+          <h3>影视剪辑</h3>
+          <p>剧情速览、片段解说，帮助快速了解内容梗概。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 推荐 -->
+  <section class="section" id="recommend">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>今日推荐<small>综合题材、时长与观看节奏挑选的内容</small></h2>
+        <a href="#rank" class="more">查看榜单 →</a>
+      </div>
+      <div class="video-grid">
+        <article class="video-card">
+          <div class="thumb t1">😂<span class="tag">搞笑</span><span class="dur">03:12</span></div>
+          <div class="video-body">
+            <h3>办公室里的那些小尴尬，看完忍不住笑出声</h3>
+            <p>用夸张表演还原职场日常，节奏轻快，适合午休时观看。</p>
+            <div class="video-meta"><span>轻松娱乐</span><span>3 分钟</span></div>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="thumb t2">🍜<span class="tag">美食</span><span class="dur">05:40</span></div>
+          <div class="video-body">
+            <h3>十分钟搞定一碗热汤面，食材简单味道不将就</h3>
+            <p>从备料到出锅完整演示，步骤清晰，适合厨房新手参考。</p>
+            <div class="video-meta"><span>美食生活</span><span>5 分钟</span></div>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="thumb t3">🐱<span class="tag">萌宠</span><span class="dur">02:26</span></div>
+          <div class="video-body">
+            <h3>猫咪第一次见到雪，反应比想象中更可爱</h3>
+            <p>记录宠物面对陌生环境时的真实反应，画面温暖治愈。</p>
+            <div class="video-meta"><span>萌宠动物</span><span>2 分钟</span></div>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="thumb t4">🪴<span class="tag">手工</span><span class="dur">06:05</span></div>
+          <div class="video-body">
+            <h3>用旧木箱改造成阳台花架，成本不高还实用</h3>
+            <p>展示测量、切割与组装过程，附带安全操作提醒。</p>
+            <div class="video-meta"><span>创意手工</span><span>6 分钟</span></div>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="thumb t5">🎞️<span class="tag">剪辑</span><span class="dur">08:18</span></div>
+          <div class="video-body">
+            <h3>一部电影的完整故事线，八分钟讲清来龙去脉</h3>
+            <p>按时间顺序梳理剧情，适合在决定是否观看前快速了解。</p>
+            <div class="video-meta"><span>影视剪辑</span><span>8 分钟</span></div>
+          </div>
+        </article>
+        <article class="video-card">
+          <div class="thumb t6">🏃<span class="tag">运动</span><span class="dur">04:47</span></div>
+          <div class="video-body">
+            <h3>零基础居家拉伸，久坐之后跟着做一遍</h3>
+            <p>动作幅度温和，讲解配合呼吸节奏，适合日常放松。</p>
+            <div class="video-meta"><span>运动户外</span><span>4 分钟</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 榜单 + 侧栏 -->
+  <section class="section" id="rank">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>热门榜单<small>按近期观看热度整理的参考排行</small></h2>
+        <a href="#recommend" class="more">回到推荐 →</a>
+      </div>
+      <div class="split">
+        <div class="rank-list">
+          <div class="rank-item">
+            <span class="rank-no">1</span>
+            <div class="rank-body">
+              <h3>那些年被误解的生活常识，其实并不准确</h3>
+              <p>科普向 · 讲解清晰 · 适合全家一起看</p>
+            </div>
+            <span class="rank-score">热度 98</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-no">2</span>
+            <div class="rank-body">
+              <h3>街头随机采访：最近让你开心的一件小事</h3>
+              <p>生活记录 · 真实回答 · 氛围轻松</p>
+            </div>
+            <span class="rank-score">热度 95</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-no">3</span>
+            <div class="rank-body">
+              <h3>一台旧相机记录的城市清晨，安静又治愈</h3>
+              <p>影像记录 · 画面干净 · 适合放松</p>
+            </div>
+            <span class="rank-score">热度 92</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-no">4</span>
+            <div class="rank-body">
+              <h3>新手养绿植最容易踩的五个坑，你中了几个</h3>
+              <p>生活经验 · 实用建议 · 内容具体</p>
+            </div>
+            <span class="rank-score">热度 89</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-no">5</span>
+            <div class="rank-body">
+              <h3>把家常食材做出新花样，一周不重样的思路</h3>
+              <p>美食教程 · 可操作性强 · 步骤完整</p>
+            </div>
+            <span class="rank-score">热度 86</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-no">6</span>
+            <div class="rank-body">
+              <h3>用手机也能拍出稳定画面，几个实用小技巧</h3>
+              <p>拍摄技巧 · 上手简单 · 适合入门</p>
+            </div>
+            <span class="rank-score">热度 83</span>
+          </div>
+        </div>
+
+        <aside>
+          <div class="side-card">
+            <h3>本周热门话题</h3>
+            <ul class="side-list">
+              <li><b>01</b> 你最近一次被逗笑是因为什么</li>
+              <li><b>02</b> 一个人吃饭也会认真做菜吗</li>
+              <li><b>03</b> 家里最治愈的角落长什么样</li>
+              <li><b>04</b> 有哪些坚持了很久的小习惯</li>
+              <li><b>05</b> 周末更愿意出门还是待在家</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>内容标签</h3>
+            <div class="side-tags">
+              <a href="#category">搞笑日常</a>
+              <a href="#category">美食教程</a>
+              <a href="#category">萌宠</a>
+              <a href="#category">手工DIY</a>
+              <a href="#category">生活记录</a>
+              <a href="#category">影视解说</a>
+              <a href="#category">运动健身</a>
+              <a href="#category">拍摄技巧</a>
+            </div>
+          </div>
+          <div class="side-card">
+            <h3>观看小提示</h3>
+            <ul class="side-list">
+              <li><b>·</b> 先看时长，再决定是否适合当下场景</li>
+              <li><b>·</b> 结合分类浏览，减少无效翻找</li>
+              <li><b>·</b> 合理安排观看时间，注意休息</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 观看指南 -->
+  <section class="section" id="guide">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>观看指南<small>如何更高效地找到自己想看的内容</small></h2>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="num">STEP 01</div>
+          <h3>先明确你想看什么类型</h3>
+          <p>如果只是想放松，可以从搞笑娱乐或萌宠动物入手；如果想学点东西，美食教程、创意手工和拍摄技巧会更合适。先确定方向，再进入对应分类，能明显减少在无关内容上花费的时间。</p>
+        </div>
+        <div class="guide-card">
+          <div class="num">STEP 02</div>
+          <h3>用时长筛选合适的场景</h3>
+          <p>两三分钟的短片适合排队、等车这类碎片时间；五到十分钟的内容更适合午休或睡前。把时长和场景匹配起来，观看体验会更完整，也不容易看到一半被迫中断。</p>
+        </div>
+        <div class="guide-card">
+          <div class="num">STEP 03</div>
+          <h3>参考榜单但不必完全依赖</h3>
+          <p>榜单反映的是整体热度，不代表每个人的偏好。可以把它当作发现内容的入口，遇到感兴趣的题材再顺着标签或分类继续浏览，逐渐形成适合自己的内容列表。</p>
+        </div>
+        <div class="guide-card">
+          <div class="num">STEP 04</div>
+          <h3>保持合理的观看节奏</h3>
+          <p>短视频容易让人不知不觉看很久。建议在开始前大致设定一个时间范围，看完计划中的内容就停下来。长时间注视屏幕时，注意适当远眺和活动身体。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者 -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>内容方向参考<small>常见创作者类型与内容特点</small></h2>
+      </div>
+      <div class="creator-grid">
+        <div class="creator">
+          <div class="avatar a1">生</div>
+          <h3>生活记录类</h3>
+          <p>以日常片段为主，内容真实、节奏舒缓，适合放松观看。</p>
+        </div>
+        <div class="creator">
+          <div class="avatar a2">技</div>
+          <h3>技能教学类</h3>
+          <p>围绕具体技能展开，步骤清晰，便于跟着练习和实践。</p>
+        </div>
+        <div class="creator">
+          <div class="avatar a3">娱</div>
+          <h3>娱乐表演类</h3>
+          <p>依靠表演和节奏制造笑点，适合短时间快速放松心情。</p>
+        </div>
+        <div class="creator">
+          <div class="avatar a4">评</div>
+          <h3>解说评论类</h3>
+          <p>对影视、事件或现象进行梳理和解读，帮助快速理解内容。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>常见问题<small>关于内容浏览与使用的说明</small></h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>嘿嘿视频主要提供什么类型的内容？</summary>
+          <div class="answer">页面围绕轻松娱乐和生活实用两个方向组织内容，涵盖搞笑片段、美食制作、萌宠日常、创意手工、运动健身和影视剪辑等题材，方便用户按兴趣快速浏览。</div>
+        </details>
+        <details>
+          <summary>怎样更快找到自己感兴趣的视频？</summary>
+          <div class="answer">可以先通过顶部分类确定大方向，再结合视频卡片上的标签和时长信息判断是否符合需求。如果暂时没有明确目标，从推荐位或热门榜单开始浏览也是常见做法。</div>
+        </details>
+        <details>
+          <summary>页面上的榜单和热度是怎么呈现的？</summary>
+          <div class="answer">榜单用于呈现近期内容受关注程度的相对顺序，帮助用户发现可能感兴趣的内容。它只是一种参考，并不代表内容质量的绝对评价，实际选择仍应结合个人偏好。</div>
+        </details>
+        <details>
+          <summary>观看时需要注意什么？</summary>
+          <div class="answer">建议根据自身时间安排观看，避免长时间连续浏览。同时注意甄别内容中的信息，涉及健康、安全、消费等话题时，以专业渠道的建议为准，不要仅凭短视频内容做出重要决定。</div>
+        </details>
+        <details>
+          <summary>页面内容会持续更新吗？</summary>
+          <div class="answer">推荐位和榜单类栏目通常会随内容变化进行调整，以保持页面信息的时效性。分类结构和观看指南属于相对稳定的部分，会长期保留供用户查阅。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">嘿</span>
+          嘿<em>嘿</em>视频
+        </a>
+        <p>聚合轻松、有趣、生活化的短视频内容，帮助你在碎片时间里更快找到想看的视频。</p>
+      </div>
+      <div class="footer-col">
+        <h4>内容导航</h4>
+        <a href="#recommend">今日推荐</a>
+        <a href="#category">内容分类</a>
+        <a href="#rank">热门榜单</a>
+      </div>
+      <div class="footer-col">
+        <h4>使用帮助</h4>
+        <a href="#guide">观看指南</a>
+        <a href="#faq">常见问题</a>
+        <a href="#category">标签说明</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于本站</h4>
+        <a href="#">内容说明</a>
+        <a href="#">使用条款</a>
+        <a href="#">联系与反馈</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 嘿嘿视频 · 页面内容仅作信息展示与浏览参考</span>
+      <span>请合理安排观看时间，注意用眼健康</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    if(toggle && nav){
+      toggle.addEventListener('click', function(){
+        nav.classList.toggle('open');
+      });
+    }
+    var links = nav ? nav.querySelectorAll('a') : [];
+    for(var i = 0; i < links.length; i++){
+      links[i].addEventListener('click', function(){
+        if(nav) nav.classList.remove('open');
+        for(var j = 0; j < links.length; j++){
+          links[j].classList.remove('active');
+        }
+        this.classList.add('active');
+      });
+    }
+  })();
+</script>
+
+</body>
+    </html>
